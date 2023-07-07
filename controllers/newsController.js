@@ -11,6 +11,19 @@ const getNews = (req, res) => {
 const createNews = (req, res) => {
     console.log("Content posted is: \n", req.body);
 
+    const { 
+        title, subtitle, 
+        paragraph1, paragraph2, 
+        paragraph3 
+    } = req.body;
+
+    if (!title || !subtitle || 
+        !paragraph1 || !paragraph2 || 
+        !paragraph3
+        ) {
+        throw new Error("All Fields are mandatory! Fill them in, please!");
+    }
+
     res.status(201).send({ message: "Create new Notice"});
 }
 
