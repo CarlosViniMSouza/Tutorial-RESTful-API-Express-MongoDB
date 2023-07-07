@@ -1,6 +1,6 @@
 git add -A
-git commit -m "stopped in: Connect Express to MongoDB"
+git commit -m "stopped in: Mongoose Schema"
 git push -u origin main
 git status
 
-# continue in: https://youtu.be/H9M02of22z4?t=2255
+# continue in: https://youtu.be/H9M02of22z4?t=2578
