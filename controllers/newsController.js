@@ -9,6 +9,8 @@ const getNews = (req, res) => {
 // @route: POST /api/news
 // @access: public
 const createNews = (req, res) => {
+    console.log("Content posted is: \n", req.body);
+
     res.status(201).send({ message: "Create new Notice"});
 }
 

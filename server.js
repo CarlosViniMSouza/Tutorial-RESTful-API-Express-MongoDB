@@ -4,6 +4,7 @@ const dotenv = require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3060;
 
+app.use(express.json());
 app.use("/api/news", require("./routes/newsRouter"));
 
 app.listen(PORT, () => {
