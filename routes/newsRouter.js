@@ -1,24 +1,11 @@
 const express = require('express');
 const router = express.Router();
+const { 
+    getNews, createNews, 
+    getNotice, updateNotice, deleteNotice 
+} = require('../controllers/newsController');
 
-router.route('/').get((req, res) => {
-    res.status(200).send({ message: "Get all Notice"});
-});
-
-router.route('/').post((req, res) => {
-    res.status(200).send({ message: "Create new Notice"});
-});
-
-router.route('/:id').get((req, res) => {
-    res.status(200).send({ message: `Get Notice: ${req.params.id}`});
-});
-
-router.route('/:id').put((req, res) => {
-    res.status(200).send({ message: `Update Notice: ${req.params.id}`});
-});
-
-router.route('/:id').delete((req, res) => {
-    res.status(200).send({ message: `Delete Notice: ${req.params.id}`});
-});
+router.route('/').get(getNews).post(createNews);
+router.route('/:id').get(getNotice).put(updateNotice).delete(deleteNotice);
 
 module.exports = router;
