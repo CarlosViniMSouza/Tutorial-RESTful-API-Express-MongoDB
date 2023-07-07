@@ -1,10 +1,13 @@
 const asyncHandler = require('express-async-handler');
+const News = require('../models/newsModel');
 
 // @description: GET All News
 // @route: GET /api/news
 // @access: public
 const getNews = asyncHandler(async (req, res) => {
-    res.status(200).send({ message: "Get all Notice"});
+    const news = await News.find();
+
+    res.status(200).send(news);
 });
 
 // @description: Create New Notice
@@ -19,21 +22,33 @@ const createNews = asyncHandler(async (req, res) => {
         paragraph3 
     } = req.body;
 
-    if (!title || !subtitle || 
-        !paragraph1 || !paragraph2 || 
-        !paragraph3
-        ) {
-        throw new Error("All Fields are mandatory! Fill them in, please!");
+    if (!title || !subtitle || !paragraph1) {
+        throw new Error("These 3 fields are mandatory! Fill them in, please!");
     }
 
-    res.status(201).send({ message: "Create new Notice"});
+    const notice = await News.create({
+        title, 
+        subtitle, 
+        paragraph1, 
+        paragraph2, 
+        paragraph3
+    });
+
+    res.status(201).send(notice);
 });
 
 // @description: GET an News
 // @route: GET /api/news/:id
 // @access: public
 const getNotice = asyncHandler(async (req, res) => {
-    res.status(200).send({ message: `Get Notice: ${req.params.id}`});
+    const notice = await News.findById(req.params.id);
+
+    if(!notice) {
+        res.status(404);
+        throw new Error({ message: "Notice not found!" });
+    }
+    
+    res.status(200).send({ message: `Get notice of ID: ${req.params.id}` });
 });
 
 // @description: Update an News
