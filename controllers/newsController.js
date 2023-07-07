@@ -55,14 +55,36 @@ const getNotice = asyncHandler(async (req, res) => {
 // @route: PUT /api/news/:id
 // @access: public
 const updateNotice = asyncHandler(async (req, res) => {
-    res.status(200).send({ message: `Update Notice: ${req.params.id}`});
+    const news = await News.findById(req.params.id);
+
+    if(!news) {
+        res.status(404);
+        throw new Error({ message: "Notice not found!" });
+    }
+
+    const updatedNotice = await News.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        { new: true }
+    );
+
+    res.status(200).send(updatedNotice);
 });
 
 // @description: Delete an News
 // @route: DELETE /api/news/:id
 // @access: public
 const deleteNotice = asyncHandler(async (req, res) => {
-    res.status(200).send({ message: `Delete Notice: ${req.params.id}`});
+    const notice = await News.findById(req.params.id);
+
+    if(!notice) {
+        res.status(404);
+        throw new Error({ message: "Notice not found!" });
+    }
+
+    await News.remove();
+
+    res.status(200).send(notice);
 });
 
 module.exports = { getNews, createNews, getNotice, updateNotice, deleteNotice };
