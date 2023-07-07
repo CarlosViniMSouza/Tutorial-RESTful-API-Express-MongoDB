@@ -1,5 +1,5 @@
 git add -A
-git commit -m "stopped in: MongoDB setup"
+git commit -m "stopped in: Connect Express to MongoDB"
 git push -u origin main
 git status
 
