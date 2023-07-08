@@ -1,6 +1,6 @@
 git add -A
-git commit -m "stopped in: User Registration & PWD Hashing"
+git commit -m "stopped in: JWT & User Login"
 git push -u origin main
 git status
 
-# continue in: https://youtu.be/H9M02of22z4?t=3800
+# continue in: https://youtu.be/H9M02of22z4?t=4265

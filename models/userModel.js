@@ -1,6 +1,6 @@
-const moongose = require('moongose');
+const mongoose = require('mongoose');
 
-const userSchema = moongose.Schema({
+const userSchema = mongoose.Schema({
     username: {
         type: String,
         required: [true, "Add your username"]
@@ -10,7 +10,7 @@ const userSchema = moongose.Schema({
         required: [true, "Add your email"],
         unique: [true, "Email already registered"]
     },
-    username: {
+    password: {
         type: String,
         required: [true, "Add your password"]
     }
@@ -18,4 +18,4 @@ const userSchema = moongose.Schema({
     timestamps: true
 });
 
-module.exports = moongose.model("User", userSchema);
+module.exports = mongoose.model("User", userSchema);
