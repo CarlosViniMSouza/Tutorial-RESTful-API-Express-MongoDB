@@ -82,7 +82,7 @@ const deleteNotice = asyncHandler(async (req, res) => {
         throw new Error({ message: "Notice not found!" });
     }
 
-    await News.remove();
+    await News.deleteOne({ _id: req.params.id });
 
     res.status(200).send(notice);
 });

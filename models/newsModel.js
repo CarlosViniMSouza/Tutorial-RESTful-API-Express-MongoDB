@@ -21,6 +21,8 @@ const newsSchema = mongoose.Schema({
         type: 'string',
         required: [true, "Add the new Paragraph 3!"],
     }
+}, {
+    timestamps: true
 });
 
 module.exports = mongoose.model("News", newsSchema);
