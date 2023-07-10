@@ -31,7 +31,8 @@ const createNews = asyncHandler(async (req, res) => {
         subtitle, 
         paragraph1, 
         paragraph2, 
-        paragraph3
+        paragraph3,
+        user_id: req.user.id, 
     });
 
     res.status(201).send(notice);
