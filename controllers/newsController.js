@@ -5,7 +5,7 @@ const News = require('../models/newsModel');
 // @route: GET /api/news
 // @access: private
 const getNews = asyncHandler(async (req, res) => {
-    const news = await News.find();
+    const news = await News.find({ user_id: req.user.id });
 
     res.status(200).send(news);
 });

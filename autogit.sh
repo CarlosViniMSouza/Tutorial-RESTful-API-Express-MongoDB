@@ -1,6 +1,6 @@
 git add -A
-git commit -m "stopped in: Protecting News Routes"
+git commit -m "stopped in: Logged User - Create News"
 git push -u origin main
 git status
 
-# continue in: Handle Relationship User
+# continue in: https://youtu.be/H9M02of22z4?t=5690
