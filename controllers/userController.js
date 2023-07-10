@@ -79,7 +79,7 @@ const loginUser = asyncHandler(async (req, res) => {
 // @route: POST /api/user/current
 // @access: public
 const currentUser = asyncHandler(async (req, res) => {
-    res.send({ message: "Current user moment!" });
+    res.json(req.user);
 });
 
 module.exports = { registerUser, loginUser, currentUser };
