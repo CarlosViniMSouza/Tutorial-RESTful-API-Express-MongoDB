@@ -49,18 +49,23 @@ const getNotice = asyncHandler(async (req, res) => {
         throw new Error({ message: "Notice not found!" });
     }
     
-    res.status(200).send({ message: `Get notice of ID: ${req.params.id}` });
+    res.status(200).send(notice);
 });
 
 // @description: Update an News
 // @route: PUT /api/news/:id
 // @access: private
 const updateNotice = asyncHandler(async (req, res) => {
-    const news = await News.findById(req.params.id);
+    const notice = await News.findById(req.params.id);
 
-    if(!news) {
+    if(!notice) {
         res.status(404);
         throw new Error({ message: "Notice not found!" });
+    }
+
+    if (notice.user_id.toString() !== req.user.id) {
+        res.status(403);
+        throw new Error({ message: "User don't have Permission!"});
     }
 
     const updatedNotice = await News.findByIdAndUpdate(
@@ -81,6 +86,11 @@ const deleteNotice = asyncHandler(async (req, res) => {
     if(!notice) {
         res.status(404);
         throw new Error({ message: "Notice not found!" });
+    }
+
+    if (notice.user_id.toString() !== req.user.id) {
+        res.status(403);
+        throw new Error({ message: "User don't have Permission!"});
     }
 
     await News.deleteOne({ _id: req.params.id });

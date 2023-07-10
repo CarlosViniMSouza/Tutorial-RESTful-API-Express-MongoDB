@@ -1,5 +1,5 @@
 git add -A
-git commit -m "stopped in: Logged User Update & Delete News"
+git commit -m "RESTful API done!"
 git push -u origin main
 git status
 
