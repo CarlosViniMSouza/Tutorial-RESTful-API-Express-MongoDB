@@ -1,5 +1,5 @@
 git add -A
-git commit -m "stopped in: Protecting User Routes"
+git commit -m "stopped in: Protecting News Routes"
 git push -u origin main
 git status
 

@@ -3,7 +3,7 @@ const News = require('../models/newsModel');
 
 // @description: GET All News
 // @route: GET /api/news
-// @access: public
+// @access: private
 const getNews = asyncHandler(async (req, res) => {
     const news = await News.find();
 
@@ -12,7 +12,7 @@ const getNews = asyncHandler(async (req, res) => {
 
 // @description: Create New Notice
 // @route: POST /api/news
-// @access: public
+// @access: private
 const createNews = asyncHandler(async (req, res) => {
     console.log("Content posted is: \n", req.body);
 
@@ -39,7 +39,7 @@ const createNews = asyncHandler(async (req, res) => {
 
 // @description: GET an News
 // @route: GET /api/news/:id
-// @access: public
+// @access: private
 const getNotice = asyncHandler(async (req, res) => {
     const notice = await News.findById(req.params.id);
 
@@ -53,7 +53,7 @@ const getNotice = asyncHandler(async (req, res) => {
 
 // @description: Update an News
 // @route: PUT /api/news/:id
-// @access: public
+// @access: private
 const updateNotice = asyncHandler(async (req, res) => {
     const news = await News.findById(req.params.id);
 
@@ -73,7 +73,7 @@ const updateNotice = asyncHandler(async (req, res) => {
 
 // @description: Delete an News
 // @route: DELETE /api/news/:id
-// @access: public
+// @access: private
 const deleteNotice = asyncHandler(async (req, res) => {
     const notice = await News.findById(req.params.id);
 

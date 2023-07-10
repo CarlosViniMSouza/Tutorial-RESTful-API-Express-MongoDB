@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
 const newsSchema = mongoose.Schema({
+    user_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: "User", 
+    },
     title: {
         type: 'string',
         required: [true, "Add the Title!"]
